@@ -8,7 +8,7 @@ const Layout = ({ params, children }: Readonly<{ params: any, children: React.Re
             <Box component="header">
                 <Container maxWidth="lg" >
                     <Box display="flex" justifyContent="space-between" sx={{ py: "20px", borderBottom: "1px solid", borderColor: "divider" }}>
-                        <Typography component="h1" variant="h4">Logo</Typography>
+                        <Image height={100} width={100} src="/images/logo/image.png" alt="login-background-icon" />
                     </Box>
                 </Container>
             </Box>
@@ -24,7 +24,7 @@ const Layout = ({ params, children }: Readonly<{ params: any, children: React.Re
                             <Grid item xs={1} display="flex" justifyContent="center" order={{ xs: 1, md: 2 }}>
                                 <Box maxWidth="276px" textAlign="center">
                                     <Image height={300} width={400} src="/images/imgAuth/auth.png" alt="login-background-icon" />
-                                 {/*    <Box component="p" fontSize={{ xs: 20, md: 28 }} color="success.main" mt={{ xs: 1, md: 5 }} mb={{ xs: 1, md: 3 }}>
+                                    {/*    <Box component="p" fontSize={{ xs: 20, md: 28 }} color="success.main" mt={{ xs: 1, md: 5 }} mb={{ xs: 1, md: 3 }}>
                                         Record Expenses Effortlessly
                                     </Box>
                                     <Box component="p" fontSize={{ xs: 12, md: 14 }} m={0} color="text.secondary">
