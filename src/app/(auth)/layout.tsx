@@ -1,4 +1,5 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
+import Image from "next/image";
 const Layout = ({ params, children }: Readonly<{ params: any, children: React.ReactNode }>) => {
     console.log(params);
 
@@ -22,15 +23,13 @@ const Layout = ({ params, children }: Readonly<{ params: any, children: React.Re
                             </Grid>
                             <Grid item xs={1} display="flex" justifyContent="center" order={{ xs: 1, md: 2 }}>
                                 <Box maxWidth="276px" textAlign="center">
-                                    {/* <Image height={250} src={OfficeIcon} alt="login-background-icon" /> */}
-                                    <Typography component="h1" variant="h4">image</Typography>
-
-                                    <Box component="p" fontSize={{ xs: 20, md: 28 }} color="success.main" mt={{ xs: 1, md: 5 }} mb={{ xs: 1, md: 3 }}>
+                                    <Image height={300} width={400} src="/images/imgAuth/auth.png" alt="login-background-icon" />
+                                 {/*    <Box component="p" fontSize={{ xs: 20, md: 28 }} color="success.main" mt={{ xs: 1, md: 5 }} mb={{ xs: 1, md: 3 }}>
                                         Record Expenses Effortlessly
                                     </Box>
                                     <Box component="p" fontSize={{ xs: 12, md: 14 }} m={0} color="text.secondary">
                                         Easily log your expenses with our user-friendly interface. Track every transaction in seconds
-                                    </Box>
+                                    </Box> */}
                                 </Box>
                             </Grid>
                         </Grid>
