@@ -1,19 +1,15 @@
+import { Metadata } from 'next';
+import React from 'react'
 
-import { Typography } from "@mui/material";
-import { Metadata } from "next";
-import Link from "next/link";
-
-export const metadata = {
-    title: "Accounting | Reset Password",
+export const metadata: Metadata = {
+    title: "Accounting  | ResetPassword",
 };
-
-const ResetPasswordPage = () => {
-
+function ResetPassword() {
     return (
         <>
-            <Typography component="h1" variant="h4">Reset Password</Typography>
+            ResetPassword
         </>
-    );
+    )
 }
 
-export default ResetPasswordPage;
+export default ResetPassword

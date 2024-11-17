@@ -1,44 +1,59 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+
+import { Box, Grid, Typography, Container } from "@mui/material";
 import Image from "next/image";
-const Layout = ({ params, children }: Readonly<{ params: any, children: React.ReactNode }>) => {
+import Link from "next/link";
+
+type LayoutProps = {
+    params: any;
+    children: React.ReactNode;
+};
+
+const Layout = ({ params, children }: LayoutProps) => {
     console.log(params);
 
     return (
-        <>
-            <Box component="header">
-                <Container maxWidth="lg" >
-                    <Box display="flex" justifyContent="space-between" sx={{ py: "20px", borderBottom: "1px solid", borderColor: "divider" }}>
-                        <Image height={100} width={100} src="/images/logo/image.png" alt="login-background-icon" />
+        <Container maxWidth={false} disableGutters
+            sx={{ height: "100vh", margin: 0, padding: 0 }}
+        >
+            <Grid container columns={{ xs: 12, md: 12 }} display="flex" alignItems="center" sx={{ height: "100%" }} >
+                <Grid item xs={12} md={7} display="flex" justifyContent="center" alignItems="center"
+                    sx={{
+                        padding: { xs: 2, md: 5 },
+                        height: "100%",
+                    }}
+                >
+                    <Box width="100%" maxWidth={400}>
+                        {children}
+                        <Box display="flex" justifyContent="center" mt={2}>
+                            <Link href="#" passHref>
+                                <Typography
+                                    sx={{
+                                        textDecoration: "none",
+                                        color: "textSecondary",
+                                    }}
+                                >
+                                    Don’t have an account? Create account
+                                </Typography>
+                            </Link>
+                        </Box>
                     </Box>
-                </Container>
-            </Box>
-            <Box component="main">
-                <Box height={{ xs: "100%", md: "calc(100dvh - 86px)" }} display="flex" alignItems="center" justifyContent="center"  >
-                    <Container maxWidth="lg" >
-                        <Grid container columns={{ xs: 1, md: 2 }} columnSpacing={{ xs: 0, md: 5, lg: 15 }} display="flex" alignItems="center">
-                            <Grid item xs={1} order={{ xs: 2, md: 1 }}>
-                                <Box sx={{ p: { xs: 0, md: 5 }, my: { xs: 5, md: 0 }, border: "1px solid ", borderColor: { xs: "#fff", md: "divider" }, boxShadow: { xs: "0", md: "0px 2px 6px 0px rgba(94,94,94,0.14)" } }} borderRadius="6px">
-                                    {children}
-                                </Box>
-                            </Grid>
-                            <Grid item xs={1} display="flex" justifyContent="center" order={{ xs: 1, md: 2 }}>
-                                <Box maxWidth="276px" textAlign="center">
-                                    <Image height={300} width={400} src="/images/imgAuth/auth.png" alt="login-background-icon" />
-                                    {/*    <Box component="p" fontSize={{ xs: 20, md: 28 }} color="success.main" mt={{ xs: 1, md: 5 }} mb={{ xs: 1, md: 3 }}>
-                                        Record Expenses Effortlessly
-                                    </Box>
-                                    <Box component="p" fontSize={{ xs: 12, md: 14 }} m={0} color="text.secondary">
-                                        Easily log your expenses with our user-friendly interface. Track every transaction in seconds
-                                    </Box> */}
-                                </Box>
-                            </Grid>
-                        </Grid>
-                    </Container>
-                </Box>
+                </Grid>
 
-            </Box >
-        </>
+                <Grid item xs={12} md={5} display="flex" justifyContent="center" alignItems="center" sx={{
+                    backgroundColor: "#008CFFD6",
+                    height: "100%",
+                }}
+                >
+                    <Box display="flex" justifyContent="center" alignItems="center" width="100%">
+                        <Image height={500} width={500}
+                            src="/images/imgAuth/login.png"
+                            alt="login-background-icon"
+                        />
+                    </Box>
+                </Grid>
+            </Grid>
+        </Container>
     );
-}
+};
 
 export default Layout;

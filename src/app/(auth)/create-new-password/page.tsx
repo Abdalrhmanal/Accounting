@@ -1,18 +1,12 @@
-
-import { Typography } from "@mui/material";
-import { Metadata } from "next";
-import Link from "next/link";
+import { Metadata } from 'next';
+import React from 'react'
+import CreateNewPasswordPage from './CreateNewPassword';
 
 export const metadata: Metadata = {
-    title: "Accounting  | Create NewPassword",
+    title: "Accounting  | Create New Password",
 };
-
-const CreateNewPasswordPage = () => {
-    return (
-        <>
-          <Typography component="h1" variant="h4">Create NewPassword</Typography>
-        </>
-    );
+function CreateNewPassword() {
+    return <CreateNewPasswordPage />
 }
 
-export default CreateNewPasswordPage;
+export default CreateNewPassword

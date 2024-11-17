@@ -1,16 +1,15 @@
-import { Typography } from "@mui/material";
-import { Metadata } from "next";
-import Link from "next/link";
-export const metadata: Metadata = {
-    title: "Accounting | Register",
-};
+import { Metadata } from 'next';
+import React from 'react'
 
-const RegisterPage = () => {
+export const metadata: Metadata = {
+    title: "Accounting  | Register",
+};
+function Register() {
     return (
         <>
-            <Typography component="h1" variant="h4">Register</Typography>
+            Register
         </>
-    );
+    )
 }
 
-export default RegisterPage;
+export default Register

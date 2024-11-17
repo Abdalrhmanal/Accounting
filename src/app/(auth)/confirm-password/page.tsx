@@ -1,19 +1,15 @@
-
-import { Typography } from "@mui/material";
-import { Metadata } from "next";
-import Link from "next/link";
+import { Metadata } from 'next';
+import React from 'react'
 
 export const metadata: Metadata = {
-    title: "Accounting  | Forgot Password",
+    title: "Accounting  | Confirm Password",
 };
-
-const ConfirmResetPasswordPage = () => {
+function ConfirmPassword() {
     return (
         <>
-            <Typography component="h1" variant="h4">Forgot Your Password?</Typography>
-            
+            confirm-password jnojnol
         </>
-    );
+    )
 }
 
-export default ConfirmResetPasswordPage;
+export default ConfirmPassword

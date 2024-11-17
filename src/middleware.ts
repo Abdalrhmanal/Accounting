@@ -7,13 +7,13 @@ export function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname
     const isProtectedRoute = !publicRoutes.includes(path)
 
-    const authCookie = request.cookies.get("auth-store")?.value
+    const authCookie = request.cookies.get("auth-log")?.value
     let isAuthenticated = false
 
     if (authCookie) {
         try {
             const parsedCookie = JSON.parse(authCookie)
-            isAuthenticated = parsedCookie.state?.isAuthenticated && request.cookies.has("auth-store")
+            isAuthenticated = parsedCookie.state?.isAuthenticated && request.cookies.has("auth-log")
         } catch (error) {
             console.error("Failed to parse auth cookie:", error)
             isAuthenticated = false
