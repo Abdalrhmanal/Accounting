@@ -21,7 +21,7 @@ const useLogin = (): UseLoginResult => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.post("http://schoolskyline.shop/api/login", data
+            const response = await axios.post("https://schoolskyline.shop/api/login", data
                 , {
                     headers: {
                         'Content-Type': 'application/json',
