@@ -1,12 +1,12 @@
-import { Metadata } from 'next';
-import React from 'react'
-import CreateNewPasswordPage from './CreateNewPassword';
+import { Metadata } from "next";
+import React from "react";
+import CreateNewPasswordClientPage from "./CreateNewPasswordClientPage";
 
 export const metadata: Metadata = {
-    title: "Accounting  | Create New Password",
+  title: "Accounting  | Create New Password",
 };
 function CreateNewPassword() {
-    return <CreateNewPasswordPage />
+  return <CreateNewPasswordClientPage />;
 }
 
-export default CreateNewPassword
+export default CreateNewPassword;
