@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
-import { Box, TextField } from '@mui/material';
+import { Box, IconButton, InputAdornment, TextField } from '@mui/material';
+import { Email } from '@mui/icons-material';
 
 interface FildeAuthEmailProps {
     name: string;
@@ -26,6 +27,15 @@ const FildeAuthEmail: React.FC<FildeAuthEmailProps> = ({ name, required, value, 
                 helperText={isValidEmail ? 'Valid email' : 'Please enter a valid email'}
                 error={Boolean(value) && !isValidEmail}
                 required={required}
+                slotProps={{
+                    input: {
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <Email />
+                            </InputAdornment>
+                        )
+                    }
+                }}
             />
         </Box>
     );
