@@ -5,7 +5,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 interface FildeAuthPasswordProps {
   name: string;
-  label: string;
+  label?: string;
   required?: boolean;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -14,7 +14,7 @@ interface FildeAuthPasswordProps {
 
 const FildeAuthPassword: React.FC<FildeAuthPasswordProps> = ({
   name,
-  label,
+  label = "Password",
   required,
   value,
   onChange,
