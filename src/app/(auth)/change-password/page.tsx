@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import React from "react";
-import ChangePasswordClientPage from "./ChangePasswordClientPage";
+import ChangePasswordClientPage from "./ChangePasswordClientPage2";
 
 export const metadata: Metadata = {
   title: "Accounting  | Change Password",

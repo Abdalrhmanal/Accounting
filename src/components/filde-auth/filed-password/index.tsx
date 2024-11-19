@@ -9,7 +9,9 @@ interface FildeAuthPasswordProps {
   required?: boolean;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  helperText?: string;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  helperText?: string | false | undefined;
+  error?: boolean;
 }
 
 const FildeAuthPassword: React.FC<FildeAuthPasswordProps> = ({
@@ -18,15 +20,15 @@ const FildeAuthPassword: React.FC<FildeAuthPasswordProps> = ({
   required,
   value,
   onChange,
+  onBlur,
   helperText,
+  error,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
-
-  const hasError = Boolean(value ?? "") && (value?.length ?? 0) < 8;
 
   return (
     <Box sx={{ width: "100%", my: 2 }}>
@@ -39,11 +41,10 @@ const FildeAuthPassword: React.FC<FildeAuthPasswordProps> = ({
         type={showPassword ? "text" : "password"}
         value={value}
         onChange={onChange}
+        onBlur={onBlur}
         //temp message for design purpose
-        helperText={
-          hasError ? "the password must be at least 8 characters" : helperText
-        }
-        error={hasError}
+        helperText={helperText}
+        error={error}
         slotProps={{
           input: {
             endAdornment: (
