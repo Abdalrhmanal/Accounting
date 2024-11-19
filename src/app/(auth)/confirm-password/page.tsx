@@ -1,15 +1,9 @@
-import { Metadata } from 'next';
-import React from 'react'
+import { Metadata } from "next";
+import ConfirmPasswordClientPage from "./ConfirmPasswordClientPage";
 
 export const metadata: Metadata = {
-    title: "Accounting  | Confirm Password",
+  title: "Accounting  | Confirm Password",
 };
-function ConfirmPassword() {
-    return (
-        <>
-            confirm-password jnojnol
-        </>
-    )
-}
+const ConfirmPassword = () => <ConfirmPasswordClientPage />;
 
-export default ConfirmPassword
+export default ConfirmPassword;
