@@ -31,7 +31,6 @@ const FildeAuthPassword: React.FC<FildeAuthPasswordProps> = ({ name, required, v
                 onChange={onChange}
                 helperText={helperText}
                 error={Boolean(value ?? '') && (value?.length ?? 0) < 8}
-                InputProps
                 slotProps={{
                     input: {
                         endAdornment: (
