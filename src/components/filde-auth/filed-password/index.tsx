@@ -26,6 +26,8 @@ const FildeAuthPassword: React.FC<FildeAuthPasswordProps> = ({
     setShowPassword((prev) => !prev);
   };
 
+  const hasError = Boolean(value ?? "") && (value?.length ?? 0) < 8;
+
   return (
     <Box sx={{ width: "100%", my: 2 }}>
       <TextField
@@ -37,8 +39,11 @@ const FildeAuthPassword: React.FC<FildeAuthPasswordProps> = ({
         type={showPassword ? "text" : "password"}
         value={value}
         onChange={onChange}
-        helperText={helperText}
-        error={Boolean(value ?? "") && (value?.length ?? 0) < 8}
+        //temp message for design purpose
+        helperText={
+          hasError ? "the password must be at least 8 characters" : helperText
+        }
+        error={hasError}
         slotProps={{
           input: {
             endAdornment: (

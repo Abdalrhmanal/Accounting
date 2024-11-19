@@ -9,6 +9,8 @@ const publicRoutes = [
   "/create-new-password",
   "/confirm-password",
   "/reset-password",
+  //temp
+  "/change-password",
 ];
 
 export function middleware(request: NextRequest) {
