@@ -31,19 +31,23 @@ const FildeAuthPassword: React.FC<FildeAuthPasswordProps> = ({ name, required, v
                 onChange={onChange}
                 helperText={helperText}
                 error={Boolean(value ?? '') && (value?.length ?? 0) < 8}
-                InputProps={{
-                    endAdornment: (
-                        <InputAdornment position="end">
-                            <IconButton
-                                aria-label={showPassword ? "Hide password" : "Show password"}
-                                onClick={handleTogglePasswordVisibility}
-                                edge="end"
-                            >
-                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                            </IconButton>
-                        </InputAdornment>
-                    ),
+                InputProps
+                slotProps={{
+                    input: {
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label={showPassword ? "Hide password" : "Show password"}
+                                    onClick={handleTogglePasswordVisibility}
+                                    edge="end"
+                                >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                        )
+                    }
                 }}
+
                 required={required}
             />
         </Box>
