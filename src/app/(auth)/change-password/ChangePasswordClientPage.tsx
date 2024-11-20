@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Box, Button, Alert, CircularProgress } from "@mui/material";
-import FildeAuthPassword from "@/components/filde-auth/field-password";
+import FildeAuthPassword from "@/components/field-auth/field-password";
 
 import AuthFormCaption from "@/components/auth-form-caption";
 

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import FildeAuthEmail from "@/components/filde-auth/field-email";
+import FildeAuthEmail from "@/components/field-auth/field-email";
 
 import {
   Box,
@@ -9,7 +9,7 @@ import {
   Alert,
   CircularProgress,
 } from "@mui/material";
-import FildeAuthPassword from "@/components/filde-auth/field-password";
+import FildeAuthPassword from "@/components/field-auth/field-password";
 
 const CreatePasswordPage: React.FC = () => {
   const [loading, setLoading] = useState(false);

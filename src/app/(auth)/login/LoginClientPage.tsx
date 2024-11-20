@@ -7,8 +7,8 @@ import {
   Alert,
   CircularProgress,
 } from "@mui/material";
-import FildeAuthPassword from "@/components/filde-auth/field-password";
-import FildeAuthEmail from "@/components/filde-auth/field-email";
+import FildeAuthPassword from "@/components/field-auth/field-password";
+import FildeAuthEmail from "@/components/field-auth/field-email";
 import useLogin from "../hooks/login";
 
 const LoginClientPage: React.FC = () => {

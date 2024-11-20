@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import FildeAuthEmail from "@/components/filde-auth/field-email";
+import FildeAuthEmail from "@/components/field-auth/field-email";
 import {
   Box,
   Button,
