@@ -7,7 +7,7 @@ import {
   Alert,
   CircularProgress,
 } from "@mui/material";
-import FildeAuthPassword from "@/components/filde-auth/filed-password";
+import FildeAuthPassword from "@/components/filde-auth/field-password";
 import ResetPasswordStepper from "@/components/stepper";
 import AuthFormCaption from "@/components/auth-form-caption";
 

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Box, TextField, IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-interface FildeAuthPasswordProps {
+interface FieldAuthPasswordProps {
   name: string;
   label?: string;
   required?: boolean;
@@ -14,7 +14,7 @@ interface FildeAuthPasswordProps {
   error?: boolean;
 }
 
-const FildeAuthPassword: React.FC<FildeAuthPasswordProps> = ({
+const FieldAuthPassword: React.FC<FieldAuthPasswordProps> = ({
   name,
   label = "Password",
   required,
@@ -66,4 +66,4 @@ const FildeAuthPassword: React.FC<FildeAuthPasswordProps> = ({
   );
 };
 
-export default FildeAuthPassword;
+export default FieldAuthPassword;

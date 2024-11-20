@@ -3,7 +3,7 @@ import React from "react";
 import { Box, IconButton, InputAdornment, TextField } from "@mui/material";
 import { Email } from "@mui/icons-material";
 
-interface FildeAuthEmailProps {
+interface FieldAuthEmailProps {
   name: string;
   label?: string;
   required?: boolean;
@@ -11,7 +11,7 @@ interface FildeAuthEmailProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const FildeAuthEmail: React.FC<FildeAuthEmailProps> = ({
+const FieldAuthEmail: React.FC<FieldAuthEmailProps> = ({
   name,
   label = "Email",
   required,
@@ -49,4 +49,4 @@ const FildeAuthEmail: React.FC<FildeAuthEmailProps> = ({
   );
 };
 
-export default FildeAuthEmail;
+export default FieldAuthEmail;

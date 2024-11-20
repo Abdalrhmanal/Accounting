@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Box, Button, Alert, CircularProgress } from "@mui/material";
 
-import FildeAuthEmail from "@/components/filde-auth/filde-email";
+import FildeAuthEmail from "@/components/filde-auth/field-email";
 import useLogin from "../hooks/login";
 import ResetPasswordStepper from "@/components/stepper";
 import AuthFormCaption from "@/components/auth-form-caption";
