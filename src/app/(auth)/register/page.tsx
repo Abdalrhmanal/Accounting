@@ -1,15 +1,10 @@
-import { Metadata } from 'next';
-import React from 'react'
+import { Metadata } from "next";
+import RegisterClientPage from "./RegisterClientPage";
 
 export const metadata: Metadata = {
-    title: "Accounting  | Register",
+  title: "Accounting  | Register",
 };
-function Register() {
-    return (
-        <>
-            Register
-        </>
-    )
-}
 
-export default Register
+const Register = () => <RegisterClientPage />;
+
+export default Register;

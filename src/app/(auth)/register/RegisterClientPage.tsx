@@ -7,21 +7,21 @@ import {
   Alert,
   CircularProgress,
 } from "@mui/material";
-import FildeAuthPassword from "@/components/field-auth/field-password";
 import FildeAuthEmail from "@/components/field-auth/field-email";
 import useLogin from "../hooks/login";
-
-const LoginClientPage: React.FC = () => {
+import FieldAuthPhone from "@/components/field-auth/field-phone";
+import validationSchema from "@/validation-schemas/RegisterSchema";
+const RegisterClientPage: React.FC = () => {
   const { login, loading, error } = useLogin();
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
-      await login({ email, password });
+      //   await login({ email, password });
     } catch (err) {
       console.error("Login error:", err);
     }
@@ -30,7 +30,7 @@ const LoginClientPage: React.FC = () => {
   return (
     <Box component="form" onSubmit={handleSubmit}>
       <Typography variant="h5" component="h1" align="center" gutterBottom>
-        Login
+        Register
       </Typography>
 
       {error && (
@@ -39,17 +39,18 @@ const LoginClientPage: React.FC = () => {
         </Alert>
       )}
 
+      <FieldAuthPhone
+        name="phone"
+        required
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+      />
+
       <FildeAuthEmail
         name="email"
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-      />
-      <FildeAuthPassword
-        name="password"
-        required
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
       />
 
       <Button
@@ -66,4 +67,4 @@ const LoginClientPage: React.FC = () => {
   );
 };
 
-export default LoginClientPage;
+export default RegisterClientPage;
