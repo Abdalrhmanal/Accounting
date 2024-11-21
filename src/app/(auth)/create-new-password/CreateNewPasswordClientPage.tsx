@@ -5,6 +5,7 @@ import { Box, Button, Alert, CircularProgress } from "@mui/material";
 import ResetPasswordStepper from "@/components/ResetPasswordStepper";
 import AuthFormCaption from "@/components/AuthFormCaption";
 import PasswordField from "@/components/fields/PasswordField";
+import SubmitButton from "@/components/SubmitButton";
 
 const CreateNewPasswordClientPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -81,6 +82,7 @@ const CreateNewPasswordClientPage: React.FC = () => {
           label="Password"
           required
           onChange={(e) => setPassword(e.target.value)}
+          id={""}
         />
 
         <PasswordField
@@ -88,18 +90,14 @@ const CreateNewPasswordClientPage: React.FC = () => {
           label="Confirm Password"
           required
           onChange={(e) => handleMatchingPassword(e.target.value)}
+          id={""}
         />
 
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          fullWidth
-          sx={{ mt: 2 }}
+        <SubmitButton
+          label="Resend code"
+          loading={loading}
           disabled={loading || !passwordMatched}
-        >
-          {loading ? <CircularProgress size={24} /> : "Set New Password"}
-        </Button>
+        />
       </Box>
     </>
   );

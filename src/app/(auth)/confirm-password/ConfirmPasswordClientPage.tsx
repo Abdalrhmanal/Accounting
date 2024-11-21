@@ -6,6 +6,7 @@ import useLogin from "../hooks/login";
 import ResetPasswordStepper from "@/components/ResetPasswordStepper";
 import AuthFormCaption from "@/components/AuthFormCaption";
 import { MuiOtpInput } from "mui-one-time-password-input";
+import SubmitButton from "@/components/SubmitButton";
 const ConfirmPasswordClientPage: React.FC = () => {
   //TODO: send mail to user with link to reset password
   const { login, loading, error } = useLogin();
@@ -55,16 +56,7 @@ const ConfirmPasswordClientPage: React.FC = () => {
           sx={{ my: 2 }}
         />
 
-        <Button
-          type="submit"
-          variant="outlined"
-          color="secondary"
-          fullWidth
-          sx={{ mt: 2 }}
-          // disabled={true}
-        >
-          {false ? <CircularProgress size={24} /> : "Resend code"}
-        </Button>
+        <SubmitButton label="Resend code" loading={loading} />
       </Box>
     </>
   );

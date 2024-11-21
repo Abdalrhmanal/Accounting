@@ -8,6 +8,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import EmailField from "@/components/fields/EmailField";
+import SubmitButton from "@/components/SubmitButton";
 
 const ForgotPasswordPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -57,18 +58,9 @@ const ForgotPasswordPage: React.FC = () => {
       )}
 
       {/* استدعاء حقل البريد الإلكتروني */}
-      <EmailField name="email" required />
+      <EmailField name="email" required id={""} />
 
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        fullWidth
-        sx={{ mt: 2 }}
-        disabled={loading}
-      >
-        {loading ? <CircularProgress size={24} /> : "Send Reset Link"}
-      </Button>
+      <SubmitButton label="Send Reset Link" loading={loading} />
     </Box>
   );
 };

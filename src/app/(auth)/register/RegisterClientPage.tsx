@@ -11,6 +11,7 @@ import useLogin from "../hooks/login";
 import EmailField from "@/components/fields/EmailField";
 import PhoneField from "@/components/fields/PhoneField";
 import validationSchema from "@/validation-schemas/RegisterSchema";
+import SubmitButton from "@/components/SubmitButton";
 const RegisterClientPage: React.FC = () => {
   const { login, loading, error } = useLogin();
 
@@ -44,6 +45,7 @@ const RegisterClientPage: React.FC = () => {
         required
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
+        id={""}
       />
 
       <EmailField
@@ -51,18 +53,10 @@ const RegisterClientPage: React.FC = () => {
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        id={""}
       />
 
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        fullWidth
-        sx={{ mt: 2 }}
-        disabled={loading}
-      >
-        {loading ? <CircularProgress size={24} /> : "Submit"}
-      </Button>
+      <SubmitButton label="register" loading={loading} />
     </Box>
   );
 };

@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import EmailField from "@/components/fields/EmailField";
 import PasswordField from "@/components/fields/PasswordField";
+import SubmitButton from "@/components/SubmitButton";
 
 const CreatePasswordPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -58,20 +59,11 @@ const CreatePasswordPage: React.FC = () => {
         </Alert>
       )}
 
-      <EmailField name="email" required />
+      <EmailField name="email" required id={""} />
 
-      <PasswordField name="password" required />
+      <PasswordField name="password" required id={""} />
 
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        fullWidth
-        sx={{ mt: 2 }}
-        disabled={loading}
-      >
-        {loading ? <CircularProgress size={24} /> : "Create Password"}
-      </Button>
+      <SubmitButton label="Create Password" loading={loading} />
     </Box>
   );
 };

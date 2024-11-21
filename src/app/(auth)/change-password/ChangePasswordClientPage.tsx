@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import AuthFormCaption from "@/components/AuthFormCaption";
 import validationSchema from "@/validation-schemas/ChangePasswordSchema";
 import PasswordField from "@/components/fields/PasswordField";
+import SubmitButton from "@/components/SubmitButton";
 
 const ChangePasswordClientPage: React.FC = () => {
   const formik = useFormik({
@@ -106,20 +107,12 @@ const ChangePasswordClientPage: React.FC = () => {
           }
         />
 
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          fullWidth
-          sx={{ mt: 2 }}
+        {/* Submit button  */}
+        <SubmitButton
+          label="Change Password"
+          loading={formik.isSubmitting}
           disabled={formik.isSubmitting || !formik.isValid}
-        >
-          {formik.isSubmitting ? (
-            <CircularProgress size={24} />
-          ) : (
-            "Change Password"
-          )}
-        </Button>
+        />
       </Box>
     </>
   );

@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { Box, Button, Alert, CircularProgress } from "@mui/material";
+import { Box, Alert } from "@mui/material";
 
 import useLogin from "../hooks/login";
 import ResetPasswordStepper from "@/components/ResetPasswordStepper";
 import AuthFormCaption from "@/components/AuthFormCaption";
 import EmailField from "@/components/fields/EmailField";
+import SubmitButton from "@/components/SubmitButton";
 
 const ResetPasswordClientPage: React.FC = () => {
   //TODO: send mail to user with link to reset password
@@ -50,18 +51,10 @@ const ResetPasswordClientPage: React.FC = () => {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          id={""}
         />
 
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          fullWidth
-          sx={{ mt: 2 }}
-          disabled={loading}
-        >
-          {loading ? <CircularProgress size={24} /> : "Submit"}
-        </Button>
+        <SubmitButton label="Submit" loading={loading} />
       </Box>
     </>
   );

@@ -17,8 +17,8 @@ import {
 } from "@mui/icons-material";
 
 import FileField from "@/components/fields/FileField";
-import TextField from "@/components/fields/TextField";
 import FormField from "@/components/fields/FormField";
+import SubmitButton from "@/components/SubmitButton";
 
 const CompanyInfoClientPage: React.FC = () => {
   const { login, loading, error } = useLogin();
@@ -89,6 +89,8 @@ const CompanyInfoClientPage: React.FC = () => {
       >
         {loading ? <CircularProgress size={24} /> : "Submit"}
       </Button>
+
+      <SubmitButton label="Submit" loading={loading} />
     </Box>
   );
 };

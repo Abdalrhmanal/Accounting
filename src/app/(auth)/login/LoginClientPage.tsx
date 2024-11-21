@@ -11,6 +11,7 @@ import {
 import useLogin from "../hooks/login";
 import EmailField from "@/components/fields/EmailField";
 import PasswordField from "@/components/fields/PasswordField";
+import SubmitButton from "@/components/SubmitButton";
 
 const LoginClientPage: React.FC = () => {
   const { login, loading, error } = useLogin();
@@ -56,16 +57,8 @@ const LoginClientPage: React.FC = () => {
         id={""}
       />
 
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        fullWidth
-        sx={{ mt: 2 }}
-        disabled={loading}
-      >
-        {loading ? <CircularProgress size={24} /> : "Submit"}
-      </Button>
+      {/* Submit button  */}
+      <SubmitButton label="Login" loading={loading} />
     </Box>
   );
 };
