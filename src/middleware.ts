@@ -9,6 +9,7 @@ const publicRoutes = [
   "/create-new-password",
   "/confirm-password",
   "/reset-password",
+  "/company-info",
   //temp
   "/change-password",
 ];
