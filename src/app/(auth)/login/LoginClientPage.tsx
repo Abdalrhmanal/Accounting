@@ -7,9 +7,10 @@ import {
   Alert,
   CircularProgress,
 } from "@mui/material";
-import FildeAuthPassword from "@/components/field-auth/field-password";
-import FildeAuthEmail from "@/components/field-auth/field-email";
+
 import useLogin from "../hooks/login";
+import EmailField from "@/components/fields/EmailField";
+import PasswordField from "@/components/fields/PasswordField";
 
 const LoginClientPage: React.FC = () => {
   const { login, loading, error } = useLogin();
@@ -39,13 +40,13 @@ const LoginClientPage: React.FC = () => {
         </Alert>
       )}
 
-      <FildeAuthEmail
+      <EmailField
         name="email"
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <FildeAuthPassword
+      <PasswordField
         name="password"
         required
         value={password}

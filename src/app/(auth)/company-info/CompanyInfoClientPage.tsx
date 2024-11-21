@@ -6,19 +6,18 @@ import {
   Typography,
   Alert,
   CircularProgress,
-  FilledInput,
 } from "@mui/material";
 import useLogin from "../hooks/login";
 import validationSchema from "@/validation-schemas/RegisterSchema";
-import FiledText from "@/components/filed-text";
 
 import {
   ApartmentOutlined,
-  FileUpload,
   InfoOutlined,
   MapOutlined,
 } from "@mui/icons-material";
-import InputFileUpload from "@/components/field-file";
+
+import FileField from "@/components/fields/FileField";
+import TextField from "@/components/fields/TextField";
 
 const CompanyInfoClientPage: React.FC = () => {
   const { login, loading, error } = useLogin();
@@ -46,7 +45,7 @@ const CompanyInfoClientPage: React.FC = () => {
           {error}
         </Alert>
       )}
-      <FiledText
+      <TextField
         name="company_name"
         label="Name"
         required
@@ -54,7 +53,7 @@ const CompanyInfoClientPage: React.FC = () => {
         onChange={(e) => setPhone(e.target.value)}
         endIcon={<ApartmentOutlined />}
       />
-      <FiledText
+      <TextField
         name="company_address"
         label="Address"
         required
@@ -62,7 +61,7 @@ const CompanyInfoClientPage: React.FC = () => {
         onChange={(e) => setPhone(e.target.value)}
         endIcon={<MapOutlined />}
       />
-      <FiledText
+      <TextField
         name="description"
         label="Description"
         required
@@ -71,7 +70,7 @@ const CompanyInfoClientPage: React.FC = () => {
         endIcon={<InfoOutlined />}
       />
 
-      <InputFileUpload />
+      <FileField />
 
       <Button
         type="submit"

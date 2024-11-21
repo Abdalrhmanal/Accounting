@@ -1,15 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  Typography,
-  Alert,
-  CircularProgress,
-} from "@mui/material";
-import FildeAuthPassword from "@/components/field-auth/field-password";
+import { Box, Button, Alert, CircularProgress } from "@mui/material";
+
 import ResetPasswordStepper from "@/components/stepper";
-import AuthFormCaption from "@/components/auth-form-caption";
+import AuthFormCaption from "@/components/AuthFormCaption";
+import PasswordField from "@/components/fields/PasswordField";
 
 const CreateNewPasswordClientPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -81,14 +76,14 @@ const CreateNewPasswordClientPage: React.FC = () => {
           </Alert>
         )}
 
-        <FildeAuthPassword
+        <PasswordField
           name="new-password"
           label="Password"
           required
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <FildeAuthPassword
+        <PasswordField
           name="confirm-password"
           label="Confirm Password"
           required

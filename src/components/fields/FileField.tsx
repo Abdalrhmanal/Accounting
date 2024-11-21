@@ -3,11 +3,11 @@ import { Box, TextField, IconButton } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import CloseIcon from "@mui/icons-material/Close";
 
-interface ClearIconProps {
+type ClearIconProps = {
   handleClearFile: (event: MouseEvent<HTMLButtonElement>) => void;
-}
+};
 
-export default function InputFileUpload() {
+export default function FileField() {
   const [fileName, setFileName] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);

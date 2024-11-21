@@ -1,85 +1,44 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Box, Button, Alert, CircularProgress } from "@mui/material";
-import FildeAuthPassword from "@/components/field-auth/field-password";
+import { useFormik } from "formik";
 
-import AuthFormCaption from "@/components/auth-form-caption";
+import AuthFormCaption from "@/components/AuthFormCaption";
+import validationSchema from "@/validation-schemas/ChangePasswordSchema";
+import PasswordField from "@/components/fields/PasswordField";
 
 const ChangePasswordClientPage: React.FC = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const formik = useFormik({
+    initialValues: {
+      currentPassword: "",
+      newPassword: "",
+      confirmNewPassword: "",
+    },
 
-  const handlePasswordChange = (value: string) => {
-    setNewPassword(value);
-    validatePasswords(value, confirmNewPassword);
-  };
+    validationSchema: validationSchema,
+    onSubmit: async (values, { setSubmitting, setStatus }) => {
+      setStatus(null); // Clear any previous status messages
 
-  const handleNewConfirmPassword = (value: string) => {
-    setConfirmNewPassword(value);
-    validatePasswords(newPassword, value); // تم التصحيح هنا
-  };
+      try {
+        console.log("Submitted values:", values);
 
-  const validatePasswords = (password: string, confirmNewPassword: string) => {
-    if (confirmNewPassword && password !== confirmNewPassword) {
-      setError("Passwords do not match");
-      setSuccess(null);
-    } else {
-      setError(null);
-    }
-  };
+        // Simulate API call
+        await new Promise((resolve) => setTimeout(resolve, 2000));
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setLoading(true);
-    setError(null);
-    setSuccess(null);
-
-    if (!currentPassword || !newPassword || !confirmNewPassword) {
-      setError("Please fill in all fields.");
-      setLoading(false);
-      return;
-    }
-
-    if (newPassword !== confirmNewPassword) {
-      setError("New Password and Confirmation do not match.");
-      setLoading(false);
-      return;
-    }
-
-    try {
-      // Simulate API call for creating a new password
-      console.log("New password submitted");
-
-      // Example: simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      // Assuming password creation is successful
-      setSuccess("Your password has been successfully created.");
-
-      // Note: Send the new password confirmation as the same value as the new password because they must match.
-      // new_password : newPassword
-      // new_password_confirmation : newPassword
-
-      // إعادة تعيين الحقول
-      setCurrentPassword("");
-      setNewPassword("");
-      setConfirmNewPassword("");
-    } catch (err) {
-      setError(
-        "An error occurred while creating your password. Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
+        // Success message
+        setStatus({ success: "Your password has been successfully changed." });
+        formik.resetForm();
+      } catch (error) {
+        // Error message
+        setStatus({ error: "An error occurred. Please try again." });
+      } finally {
+        setSubmitting(false);
+      }
+    },
+  });
 
   return (
     <>
-      {/* Form caption */}
       <AuthFormCaption
         caption="Change Password"
         image={{
@@ -88,41 +47,60 @@ const ChangePasswordClientPage: React.FC = () => {
         }}
       />
 
-      <Box component="form" onSubmit={handleSubmit}>
-        {error && (
+      <Box component="form" onSubmit={formik.handleSubmit}>
+        {formik.status?.error && (
           <Alert severity="error" sx={{ mb: 2 }}>
-            {error}
+            {formik.status.error}
           </Alert>
         )}
 
-        {success && (
+        {formik.status?.success && (
           <Alert severity="success" sx={{ mb: 2 }}>
-            {success}
+            {formik.status.success}
           </Alert>
         )}
 
-        <FildeAuthPassword
-          name="current_password"
+        <PasswordField
+          name="currentPassword"
           label="Current Password"
           required
-          value={currentPassword}
-          onChange={(e) => setCurrentPassword(e.target.value)}
+          value={formik.values.currentPassword}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={
+            formik.touched.currentPassword && !!formik.errors.currentPassword
+          }
+          helperText={
+            formik.touched.currentPassword && formik.errors.currentPassword
+          }
         />
 
-        <FildeAuthPassword
-          name="new_password"
+        <PasswordField
+          name="newPassword"
           label="New Password"
           required
-          value={newPassword}
-          onChange={(e) => handlePasswordChange(e.target.value)}
+          value={formik.values.newPassword}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.newPassword && !!formik.errors.newPassword}
+          helperText={formik.touched.newPassword && formik.errors.newPassword}
         />
 
-        <FildeAuthPassword
-          name="new_password_confirmation"
+        <PasswordField
+          name="confirmNewPassword"
           label="New Password Confirmation"
           required
-          value={confirmNewPassword}
-          onChange={(e) => handleNewConfirmPassword(e.target.value)}
+          value={formik.values.confirmNewPassword}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={
+            formik.touched.confirmNewPassword &&
+            !!formik.errors.confirmNewPassword
+          }
+          helperText={
+            formik.touched.confirmNewPassword &&
+            formik.errors.confirmNewPassword
+          }
         />
 
         <Button
@@ -131,9 +109,13 @@ const ChangePasswordClientPage: React.FC = () => {
           color="primary"
           fullWidth
           sx={{ mt: 2 }}
-          disabled={loading || !!error}
+          disabled={formik.isSubmitting || !formik.isValid}
         >
-          {loading ? <CircularProgress size={24} /> : "Change Password"}
+          {formik.isSubmitting ? (
+            <CircularProgress size={24} />
+          ) : (
+            "Change Password"
+          )}
         </Button>
       </Box>
     </>

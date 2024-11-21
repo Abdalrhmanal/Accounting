@@ -4,7 +4,7 @@ import { Box, Button, Alert, CircularProgress } from "@mui/material";
 
 import useLogin from "../hooks/login";
 import ResetPasswordStepper from "@/components/stepper";
-import AuthFormCaption from "@/components/auth-form-caption";
+import AuthFormCaption from "@/components/AuthFormCaption";
 import { MuiOtpInput } from "mui-one-time-password-input";
 const ConfirmPasswordClientPage: React.FC = () => {
   //TODO: send mail to user with link to reset password

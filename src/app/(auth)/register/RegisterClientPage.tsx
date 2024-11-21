@@ -7,9 +7,9 @@ import {
   Alert,
   CircularProgress,
 } from "@mui/material";
-import FildeAuthEmail from "@/components/field-auth/field-email";
 import useLogin from "../hooks/login";
-import FieldAuthPhone from "@/components/field-auth/field-phone";
+import EmailField from "@/components/fields/EmailField";
+import PhoneField from "@/components/fields/PhoneField";
 import validationSchema from "@/validation-schemas/RegisterSchema";
 const RegisterClientPage: React.FC = () => {
   const { login, loading, error } = useLogin();
@@ -39,14 +39,14 @@ const RegisterClientPage: React.FC = () => {
         </Alert>
       )}
 
-      <FieldAuthPhone
+      <PhoneField
         name="phone"
         required
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
       />
 
-      <FildeAuthEmail
+      <EmailField
         name="email"
         required
         value={email}

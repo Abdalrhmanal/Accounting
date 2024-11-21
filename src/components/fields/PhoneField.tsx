@@ -1,29 +1,26 @@
 "use client";
+
 import React from "react";
-import { Box, IconButton, InputAdornment, TextField } from "@mui/material";
+import { Box, InputAdornment, TextField } from "@mui/material";
 import { Phone } from "@mui/icons-material";
 
-interface FieldAuthPhoneProps {
+type Props = {
   name: string;
   label?: string;
   required?: boolean;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  helperText?: string | false | undefined;
-  error?: boolean;
-}
+};
 
-const FieldAuthPhone: React.FC<FieldAuthPhoneProps> = ({
+export default function PhoneField({
   name,
   label = "Phone",
   required,
   value,
   onChange,
-  onBlur,
-  helperText,
-  error,
-}) => {
+}: Props) {
+  const isValidPhone = Boolean(value) && /^[+]?[\d\s()-]+$/.test(value || "");
+
   return (
     <Box sx={{ width: "100%", my: 2 }}>
       <TextField
@@ -35,27 +32,24 @@ const FieldAuthPhone: React.FC<FieldAuthPhoneProps> = ({
         type="tel"
         value={value}
         onChange={onChange}
-        helperText={helperText}
-        error={error}
+        helperText={
+          isValidPhone
+            ? "Valid phone number"
+            : "Please enter a valid phone number"
+        }
+        error={Boolean(value) && !isValidPhone}
         required={required}
         slotProps={{
           input: {
+            startAdornment: <InputAdornment position="start">+</InputAdornment>,
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton>
-                  {/* Add any icon specific to phone numbers if needed */}
-                  <Phone />
-                </IconButton>
+                <Phone />
               </InputAdornment>
-            ),
-            startAdornment: (
-              <InputAdornment position="start">+ </InputAdornment>
             ),
           },
         }}
       />
     </Box>
   );
-};
-
-export default FieldAuthPhone;
+}

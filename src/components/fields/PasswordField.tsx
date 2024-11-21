@@ -1,9 +1,10 @@
 "use client";
+
 import React, { useState } from "react";
 import { Box, TextField, IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-interface FieldAuthPasswordProps {
+type Props = {
   name: string;
   label?: string;
   required?: boolean;
@@ -12,9 +13,9 @@ interface FieldAuthPasswordProps {
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   helperText?: string | false | undefined;
   error?: boolean;
-}
+};
 
-const FieldAuthPassword: React.FC<FieldAuthPasswordProps> = ({
+export default function PasswordField({
   name,
   label = "Password",
   required,
@@ -23,7 +24,7 @@ const FieldAuthPassword: React.FC<FieldAuthPasswordProps> = ({
   onBlur,
   helperText,
   error,
-}) => {
+}: Props) {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePasswordVisibility = () => {
@@ -34,17 +35,16 @@ const FieldAuthPassword: React.FC<FieldAuthPasswordProps> = ({
     <Box sx={{ width: "100%", my: 2 }}>
       <TextField
         fullWidth
-        id={name}
+        id="password"
         name={name}
         label={label}
         variant="outlined"
         type={showPassword ? "text" : "password"}
         value={value}
         onChange={onChange}
-        onBlur={onBlur}
-        //temp message for design purpose
         helperText={helperText}
         error={error}
+        required={required}
         slotProps={{
           input: {
             endAdornment: (
@@ -60,10 +60,7 @@ const FieldAuthPassword: React.FC<FieldAuthPasswordProps> = ({
             ),
           },
         }}
-        required={required}
       />
     </Box>
   );
-};
-
-export default FieldAuthPassword;
+}

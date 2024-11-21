@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import { Box, Button, Alert, CircularProgress } from "@mui/material";
 
-import FildeAuthEmail from "@/components/field-auth/field-email";
 import useLogin from "../hooks/login";
 import ResetPasswordStepper from "@/components/stepper";
-import AuthFormCaption from "@/components/auth-form-caption";
+import AuthFormCaption from "@/components/AuthFormCaption";
+import EmailField from "@/components/fields/EmailField";
 
 const ResetPasswordClientPage: React.FC = () => {
   //TODO: send mail to user with link to reset password
@@ -45,7 +45,7 @@ const ResetPasswordClientPage: React.FC = () => {
           </Alert>
         )}
 
-        <FildeAuthEmail
+        <EmailField
           name="email"
           required
           value={email}

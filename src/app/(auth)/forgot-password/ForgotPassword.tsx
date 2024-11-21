@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import FildeAuthEmail from "@/components/field-auth/field-email";
 import {
   Box,
   Button,
@@ -8,6 +7,7 @@ import {
   Alert,
   CircularProgress,
 } from "@mui/material";
+import EmailField from "@/components/fields/EmailField";
 
 const ForgotPasswordPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -57,7 +57,7 @@ const ForgotPasswordPage: React.FC = () => {
       )}
 
       {/* استدعاء حقل البريد الإلكتروني */}
-      <FildeAuthEmail name="email" required />
+      <EmailField name="email" required />
 
       <Button
         type="submit"

@@ -1,23 +1,23 @@
 "use client";
-import React from "react";
+
 import { Box, IconButton, InputAdornment, TextField } from "@mui/material";
 import { Email } from "@mui/icons-material";
 
-interface FieldAuthEmailProps {
+type Props = {
   name: string;
   label?: string;
   required?: boolean;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+};
 
-const FieldAuthEmail: React.FC<FieldAuthEmailProps> = ({
+export default function EmailField({
   name,
   label = "Email",
   required,
   value,
   onChange,
-}) => {
+}: Props) {
   const isValidEmail =
     Boolean(value) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value || "");
 
@@ -47,6 +47,4 @@ const FieldAuthEmail: React.FC<FieldAuthEmailProps> = ({
       />
     </Box>
   );
-};
-
-export default FieldAuthEmail;
+}
