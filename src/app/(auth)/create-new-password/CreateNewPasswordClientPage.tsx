@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Box, Button, Alert, CircularProgress } from "@mui/material";
 
-import ResetPasswordStepper from "@/components/stepper";
+import ResetPasswordStepper from "@/components/ResetPasswordStepper";
 import AuthFormCaption from "@/components/AuthFormCaption";
 import PasswordField from "@/components/fields/PasswordField";
 
