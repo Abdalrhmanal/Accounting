@@ -1,22 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, TextField, IconButton, InputAdornment } from "@mui/material";
+import { IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-
-type Props = {
-  name: string;
-  label?: string;
-  required?: boolean;
-  value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  helperText?: string | false | undefined;
-  error?: boolean;
-};
+import IFormField from "@/interfaces/IFormField";
+import FormField from "./FormField";
 
 export default function PasswordField({
   name,
+  id,
   label = "Password",
   required,
   value,
@@ -24,7 +16,8 @@ export default function PasswordField({
   onBlur,
   helperText,
   error,
-}: Props) {
+  sx,
+}: IFormField) {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePasswordVisibility = () => {
@@ -32,35 +25,29 @@ export default function PasswordField({
   };
 
   return (
-    <Box sx={{ width: "100%", my: 2 }}>
-      <TextField
-        fullWidth
-        id="password"
-        name={name}
-        label={label}
-        variant="outlined"
-        type={showPassword ? "text" : "password"}
-        value={value}
-        onChange={onChange}
-        helperText={helperText}
-        error={error}
-        required={required}
-        slotProps={{
-          input: {
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label={showPassword ? "Hide password" : "Show password"}
-                  onClick={handleTogglePasswordVisibility}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          },
-        }}
-      />
-    </Box>
+    <FormField
+      name={name}
+      id={id}
+      label={label}
+      type="email"
+      value={value}
+      onChange={onChange}
+      onBlur={onBlur}
+      helperText={helperText}
+      error={error}
+      required={required}
+      endIcon={
+        <InputAdornment position="end">
+          <IconButton
+            aria-label={showPassword ? "Hide password" : "Show password"}
+            onClick={handleTogglePasswordVisibility}
+            edge="end"
+          >
+            {showPassword ? <VisibilityOff /> : <Visibility />}
+          </IconButton>
+        </InputAdornment>
+      }
+      sx={sx}
+    />
   );
 }

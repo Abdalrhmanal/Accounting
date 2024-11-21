@@ -18,6 +18,7 @@ import {
 
 import FileField from "@/components/fields/FileField";
 import TextField from "@/components/fields/TextField";
+import FormField from "@/components/fields/FormField";
 
 const CompanyInfoClientPage: React.FC = () => {
   const { login, loading, error } = useLogin();
@@ -45,29 +46,35 @@ const CompanyInfoClientPage: React.FC = () => {
           {error}
         </Alert>
       )}
-      <TextField
+      <FormField
         name="company_name"
         label="Name"
         required
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
         endIcon={<ApartmentOutlined />}
+        id={""}
+        type={"text"}
       />
-      <TextField
+      <FormField
         name="company_address"
         label="Address"
         required
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
         endIcon={<MapOutlined />}
+        id={""}
+        type={"text"}
       />
-      <TextField
+      <FormField
         name="description"
         label="Description"
         required
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
         endIcon={<InfoOutlined />}
+        id={""}
+        type={"text"}
       />
 
       <FileField />

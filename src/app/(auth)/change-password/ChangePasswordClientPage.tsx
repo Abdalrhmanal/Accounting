@@ -73,6 +73,7 @@ const ChangePasswordClientPage: React.FC = () => {
           helperText={
             formik.touched.currentPassword && formik.errors.currentPassword
           }
+          id={""}
         />
 
         <PasswordField
@@ -84,11 +85,13 @@ const ChangePasswordClientPage: React.FC = () => {
           onBlur={formik.handleBlur}
           error={formik.touched.newPassword && !!formik.errors.newPassword}
           helperText={formik.touched.newPassword && formik.errors.newPassword}
+          id={""}
         />
 
         <PasswordField
           name="confirmNewPassword"
           label="New Password Confirmation"
+          id={""}
           required
           value={formik.values.confirmNewPassword}
           onChange={formik.handleChange}

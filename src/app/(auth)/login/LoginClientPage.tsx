@@ -45,12 +45,15 @@ const LoginClientPage: React.FC = () => {
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        id={""}
+        sx={{ my: 2 }}
       />
       <PasswordField
         name="password"
         required
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        id={""}
       />
 
       <Button

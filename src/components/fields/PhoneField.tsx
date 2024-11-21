@@ -1,55 +1,42 @@
 "use client";
 
 import React from "react";
-import { Box, InputAdornment, TextField } from "@mui/material";
+import { InputAdornment } from "@mui/material";
 import { Phone } from "@mui/icons-material";
-
-type Props = {
-  name: string;
-  label?: string;
-  required?: boolean;
-  value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
+import IFormField from "@/interfaces/IFormField";
+import FormField from "./FormField";
 
 export default function PhoneField({
   name,
+  id,
   label = "Phone",
   required,
   value,
   onChange,
-}: Props) {
-  const isValidPhone = Boolean(value) && /^[+]?[\d\s()-]+$/.test(value || "");
-
+  onBlur,
+  error,
+  helperText,
+  sx,
+}: IFormField) {
   return (
-    <Box sx={{ width: "100%", my: 2 }}>
-      <TextField
-        fullWidth
-        id="phone"
-        name={name}
-        label={label}
-        variant="outlined"
-        type="tel"
-        value={value}
-        onChange={onChange}
-        helperText={
-          isValidPhone
-            ? "Valid phone number"
-            : "Please enter a valid phone number"
-        }
-        error={Boolean(value) && !isValidPhone}
-        required={required}
-        slotProps={{
-          input: {
-            startAdornment: <InputAdornment position="start">+</InputAdornment>,
-            endAdornment: (
-              <InputAdornment position="end">
-                <Phone />
-              </InputAdornment>
-            ),
-          },
-        }}
-      />
-    </Box>
+    <FormField
+      id={id}
+      name={name}
+      label={label}
+      type="tel"
+      value={value}
+      onChange={onChange}
+      onBlur={onBlur}
+      error={error}
+      helperText={helperText}
+      required={required}
+      startIcon={<InputAdornment position="start">+</InputAdornment>}
+      endIcon={
+        <InputAdornment position="end">
+          <Phone />
+        </InputAdornment>
+      }
+      sx={sx}
+    />
   );
 }
